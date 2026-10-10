@@ -1,0 +1,60 @@
+/* Only the existing transcript tokens and explicit reading columns are changed. */
+body[data-local-transcript-width] {
+  --thread-content-max-width: var(--local-transcript-max-width);
+  --thread-content-compact-max-width: var(--local-transcript-max-width);
+  --thread-content-expanded-max-width: var(--local-transcript-max-width);
+  --chat-max-width: var(--local-transcript-max-width);
+  --thread-body-inline-padding: var(--padding-toolbar, 24px);
+}
+
+body[data-local-transcript-width]
+  [class~="[--thread-content-max-width:42rem]"],
+body[data-local-transcript-width]
+  [class~="[--thread-content-max-width:48rem]"] {
+  --thread-content-max-width: var(--local-transcript-max-width);
+}
+
+/* Segmented control, matching Claude's Narrow / Medium / Wide switch. */
+.local-transcript-width-control {
+  display: inline-flex;
+  max-width: 100%;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid var(--color-token-border-default, var(--color-border, #d2d2d2));
+  border-radius: 8px;
+  background: var(--color-surface-secondary, transparent);
+}
+
+.local-transcript-width-control button {
+  min-width: 64px;
+  border: 0;
+  border-radius: 6px;
+  padding: 4px 10px;
+  color: var(--color-text-secondary, inherit);
+  background: transparent;
+  font: inherit;
+  font-size: 13px;
+  line-height: 18px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.local-transcript-width-control button:hover {
+  color: var(--color-text, inherit);
+}
+
+.local-transcript-width-control button[aria-checked="true"] {
+  color: var(--color-text, inherit);
+  background: var(--color-surface, #fff);
+  box-shadow: 0 0 0 0.5px var(--color-border-strong, rgb(0 0 0 / 0.12)),
+    0 1px 2px rgb(0 0 0 / 0.08);
+}
+
+.local-transcript-width-control button:focus-visible {
+  outline: 2px solid var(--color-ring, var(--color-text, #252525));
+  outline-offset: 1px;
+}
+
+.local-transcript-width-error {
+  color: var(--color-text-danger, #a03030);
+}

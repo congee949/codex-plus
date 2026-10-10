@@ -1,0 +1,8 @@
+/* The suggestion replaces the native placeholder text, so it inherits its position and color. */
+.ProseMirror[data-local-prompt-suggestion] .placeholder::before {
+  content: var(--local-prompt-suggestion) !important;
+}
+
+.local-prompt-suggestion-error {
+  color: var(--color-text-danger, #a03030);
+}
