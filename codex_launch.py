@@ -676,6 +676,9 @@ def command_install_agent(args):
         "StandardOutPath": str(WATCH_LOG),
         "StandardErrorPath": str(WATCH_LOG),
     }))
+    # A label disabled earlier (launchctl disable, or System Settings → Login Items) refuses
+    # to bootstrap with error 5.
+    subprocess.run(["launchctl", "enable", f"{domain}/{AGENT_LABEL}"], capture_output=True)
     subprocess.run(["launchctl", "bootstrap", domain, str(AGENT_PLIST)], check=True)
     print(f"installed {AGENT_LABEL}")
     return 0
